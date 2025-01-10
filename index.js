@@ -6,9 +6,11 @@ const apiRoutes = require('./api');
 const PORT = process.env.PORT || 3000;
 
 app.use('/api', apiRoutes);
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.get('/', (req, res) => {
-    res.send('Asosiy sahifa!');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
